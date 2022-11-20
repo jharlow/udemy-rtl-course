@@ -1,13 +1,16 @@
 import { useState } from "react";
 import "./App.css";
 
-export const replacePascalCaseWithSpaces = (colorName) => colorName.replace(/\B([A-Z])\B/g, " $1")
+export const replacePascalCaseWithSpaces = (colorName) =>
+  colorName.replace(/\B([A-Z])\B/g, " $1");
 
 function App() {
-  const [color, setColor] = useState("red");
+  const [color, setColor] = useState("MediumVioletRed");
   const [disabled, setDisabled] = useState(false);
-  const newColor = color === "red" ? "blue" : "red";
-  const buttonColor = disabled ? "gray" : color
+  const newColor =
+    color === "MediumVioletRed" ? "MidnightBlue" : "MediumVioletRed";
+  const buttonText = `Change to ${replacePascalCaseWithSpaces(newColor)}`;
+  const buttonColor = disabled ? "gray" : color;
   const handleColor = () => {
     setColor(newColor);
   };
@@ -18,7 +21,7 @@ function App() {
         onClick={handleColor}
         disabled={disabled}
       >
-        Change to {newColor}
+        {buttonText}
       </button>
       <input
         type="checkbox"

@@ -5,13 +5,15 @@ import { replacePascalCaseWithSpaces } from "./App";
 describe("button and checkbox are styled and act correctly", () => {
   test("button has correct initial color and updates when clicked", () => {
     render(<App />);
-    const colorButton = screen.getByRole("button", { name: "Change to blue" });
-    expect(colorButton).toHaveStyle({ backgroundColor: "red" });
+    const colorButton = screen.getByRole("button", {
+      name: "Change to Midnight Blue",
+    });
+    expect(colorButton).toHaveStyle({ backgroundColor: "MediumVioletRed" });
     fireEvent.click(colorButton);
-    expect(colorButton).toHaveStyle({ backgroundColor: "blue" });
-    expect(colorButton).toHaveTextContent("Change to red");
+    expect(colorButton).toHaveStyle({ backgroundColor: "MidnightBlue" });
+    expect(colorButton).toHaveTextContent("Change to Medium Violet Red");
   });
-  
+
   test("initial conditions for checkbox and color button", () => {
     render(<App />);
     const colorButton = screen.getByRole("button", { name: /change to/i });
@@ -19,35 +21,34 @@ describe("button and checkbox are styled and act correctly", () => {
     const checkbox = screen.getByRole("checkbox", { name: "Disable button" });
     expect(checkbox).not.toBeChecked();
   });
-  
+
   test("checkbox disables button on first click and enables on second click", () => {
     render(<App />);
     const colorButton = screen.getByRole("button", { name: /change to/i });
     const checkbox = screen.getByRole("checkbox", { name: "Disable button" });
-  
+
     fireEvent.click(checkbox);
     expect(colorButton).toBeDisabled();
-  
+
     fireEvent.click(checkbox);
     expect(colorButton).toBeEnabled();
   });
-  
+
   test("button turns gray whenever it is disabled", () => {
     render(<App />);
     const colorButton = screen.getByRole("button", { name: /change to/i });
     const checkbox = screen.getByRole("checkbox", { name: "Disable button" });
-  
+
     fireEvent.click(checkbox);
     expect(colorButton).toHaveStyle({ backgroundColor: "gray" });
     fireEvent.click(checkbox);
-    expect(colorButton).toHaveStyle({ backgroundColor: "red" });
+    expect(colorButton).toHaveStyle({ backgroundColor: "MediumVioletRed" });
     fireEvent.click(colorButton);
     fireEvent.click(checkbox);
     expect(colorButton).toHaveStyle({ backgroundColor: "gray" });
     fireEvent.click(checkbox);
-    expect(colorButton).toHaveStyle({ backgroundColor: "blue" });
-  
-})
+    expect(colorButton).toHaveStyle({ backgroundColor: "MidnightBlue" });
+  });
 });
 
 describe("spaces before pascal-case capital letters", () => {
