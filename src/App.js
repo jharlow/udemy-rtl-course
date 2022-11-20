@@ -5,13 +5,14 @@ function App() {
   const [color, setColor] = useState("red");
   const [disabled, setDisabled] = useState(false);
   const newColor = color === "red" ? "blue" : "red";
+  const buttonColor = disabled ? "gray" : color
   const handleColor = () => {
     setColor(newColor);
   };
   return (
     <div>
       <button
-        style={{ backgroundColor: color }}
+        style={{ backgroundColor: buttonColor }}
         onClick={handleColor}
         disabled={disabled}
       >
