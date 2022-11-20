@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./App.css";
 
+export const replacePascalCaseWithSpaces = (colorName) => colorName.replace(/\B([A-Z])\B/g, " $1")
+
 function App() {
   const [color, setColor] = useState("red");
   const [disabled, setDisabled] = useState(false);
